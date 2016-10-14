@@ -205,7 +205,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[95]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># Import libraries necessary for this project</span>
@@ -258,7 +258,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[96]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># Display a description of the dataset</span>
@@ -385,7 +385,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[97]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># TODO: Select three indices of your choice you wish to sample from the dataset</span>
@@ -514,7 +514,7 @@ Third one is harder to tell and could be a cafe that consumes high volume of mil
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[98]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c"># TODO: Make a copy of the DataFrame, using the &#39;drop&#39; function to drop the given feature</span>
@@ -531,10 +531,7 @@ Third one is harder to tell and could be a cafe that consumes high volume of mil
 <span class="n">regressor</span> <span class="o">=</span> <span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
 <span class="c"># TODO: Report the score of the prediction using the testing set</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">rss</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">y_test</span> <span class="o">-</span> <span class="n">y_pred</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">tss</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span> <span class="n">y_test</span> <span class="o">**</span> <span class="mi">2</span> <span class="p">)</span>
-<span class="n">score</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="n">rss</span><span class="o">/</span><span class="n">tss</span>
+<span class="n">score</span> <span class="o">=</span> <span class="n">regressor</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 <span class="k">print</span><span class="s">&quot;score is </span><span class="si">%0.3f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">score</span>
 </pre></div>
 
@@ -548,7 +545,7 @@ Third one is harder to tell and could be a cafe that consumes high volume of mil
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>score is 0.179
+<pre>score is -0.386
 </pre>
 </div>
 </div>
@@ -574,7 +571,7 @@ Third one is harder to tell and could be a cafe that consumes high volume of mil
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong>
-I attempted to predict "Fresh" from other five features. The prediction score is 0.179, which is very low. So this feature is necessary for identifying customers' spending habits.</p>
+I attempted to predict "Fresh" from other five features. The prediction score is -0.386, which is negative. So the model fails to fit the data. This implies 'Fresh' is necessary for identifying customers' spending habits.</p>
 
 </div>
 </div>
@@ -2191,7 +2188,7 @@ usAbTY7jOI7jOI7jOF3w/3JiirUwHuwHAAAAAElFTkSuQmCC
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong>
-There are a few pairs of features that have some degree of correlation. They are Milk and Grocery, Milk and Detergents_paper, Grocery and Detergents_paper. This confirms that "Fresh" is not correlated with any other features. I do not think these features are normally distributed, since we have a sharp cut at value 0 and the points skew to the left.</p>
+There are a few pairs of features that have some degree of correlation. They are Milk and Grocery, Milk and Detergents_paper, Grocery and Detergents_paper. This confirms that "Fresh" is not correlated with any other features. I do not think these features are normally distributed, since we have a sharp cut at value 0 and the points skew to the right.</p>
 
 </div>
 </div>
@@ -7827,8 +7824,8 @@ eEzT3wAAAABJRU5ErkJggg==
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong>
-Cluster 0: High Fresh, high frozen, low Milk/Grocery/Detergents_Paper, and low Delicantessen.
-Cluster 1: low Fresh/Frozen, high Milk/Grocery/Detergents_Paper.</p>
+Cluster 0: High Fresh, high frozen, low Milk/Grocery/Detergents_Paper, and low Delicantessen. This could be restaurants or hotels
+Cluster 1: low Fresh/Frozen, high Milk/Grocery/Detergents_Paper. This could be local markets and retailers.</p>
 
 </div>
 </div>
@@ -7924,7 +7921,7 @@ Sample point 2 is hard to tell. It has low Fresh, high milk and high deli, which
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong>
-The clustering segments customers into two groups. The delivery service change may have different affects on customers. The distributor can test some customers from each of two groups. Based on customers' feedback, the distributor will know which group reacts positively.</p>
+The delivery service change may have different affects on customers. The distributor can divide customers in each clustering segment into two groups with equal number of people. Then for each segment, one of the groups receives delivery service of 5 days a week and the other group receives 3 days a week. After the experiment, a statistical testing (such as t-test) can be performed between two groups of each segment. Based on customers' feedback, the distributor will know which segment reacts positively.</p>
 
 </div>
 </div>
